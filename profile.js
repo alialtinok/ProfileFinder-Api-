@@ -10,6 +10,10 @@ class Profile {
 
         const profile = await profileResponse.json()
 
-        return { profile }
+
+        const todoResponse = await fetch(`https://jsonplaceholder.typicode.com/todos?userId=${profile[0].id}`)
+        const todo = await todoResponse.json() 
+
+        return { profile,todo }
     }
 }

@@ -47,10 +47,13 @@ class UI {
                 <li class="list-group-item">
                     company : ${profile.company.name}
                 </li>
-
-
-
                 </ul>
+                  
+                <h4>ToDo List</h4>
+                <ul id="todo" class="list-group">
+    
+                </ul>
+                
                 </div>
         </div>
     </div>
@@ -61,9 +64,32 @@ class UI {
     showAlert(text) {
         this.alert.innerHTML = `${text} is not found`
     }
-    
+
+    showTodo(todo) {
+
+        let html = "";
+
+        todo.forEach(item => {
+            if (item.complated) {
+                html += `
+                <li class="list-group-item bg-success">
+                  ${item.title}
+                </li>
+                `;
+            } else {
+                html += `
+                <li class="list-group-item bg-warning">
+                  ${item.title}
+                </li>
+                `;
+            }
+        })
+        this.profileContainer.querySelector('#todo').innerHTML = html;
+
+    }
+
     clear() {
-        this.profileContainer.innerHTML="";
-        this.alert.innerHTML="";
+        this.profileContainer.innerHTML = "";
+        this.alert.innerHTML = "";
     }
 }
